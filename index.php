@@ -91,40 +91,7 @@
                 margin:5px;
             }
         </style>
-        <script>
-            if(window.location.href=="http://localhost/chatbot/index.php"){
-                window.onload = function(){
-                    setTimeout(function(){
-                        document.getElementById("button").click();
-                    },500);
-                };
-                console.log('if');
-            } else{
-                console.log('else');
-                window.onload = function(){
-                        document.getElementById("button").click();
-                };
-            }
-            function showChat(e){
-                // document.getElementById("chat").style.transition="all 1s ease-in-out";
-                if(e.innerText=="Start Chatting"){
-                    e.innerText="End Chatting";
-                    document.getElementById("chat").style.opacity="1";
-                    document.getElementById("tagline").style.visibility="hidden";
-                    
-                } else if(e.innerText="End Chatting"){
-                    e.innerText="Start Chatting";
-                    document.getElementById("chat").style.opacity="0";
-                    document.getElementById("tagline").style.visibility="visible";
-                }
-            }
-            function addquestion(){
-                $url=document.getElementById('getquestion').action;
-                $url += "?quest="+(document.getElementById("q1").id);
-                console.log( $url );
-                document.getElementById('getquestion').action=$url;
-            }
-        </script>
+        
     </head>
     <body>
         <div id="box">
@@ -196,6 +163,33 @@
                 $url += "?quest=" +e.id;
                 console.log( $url );
                 document.getElementById('getquestion').action=$url;
+            }
+            if(window.location.href=="http://localhost/chatbot/index.php"){
+                window.onload = function(){
+                    setTimeout(function(){
+                        document.getElementById("button").click();
+                    },500);
+                };
+                console.log('if');
+            } else{
+                console.log('else');
+                window.onload = function(){
+                        document.getElementById("button").click();
+                };
+            }
+            function showChat(e){
+                // document.getElementById("chat").style.transition="all 1s ease-in-out";
+                if(e.innerText=="Start Chatting"){
+                    e.innerText="End Chatting";
+                    document.getElementById("chat").style.opacity="1";
+                    document.getElementById("tagline").style.visibility="hidden";
+                    setTimeout(function(){document.getElementById("chat").style.display="block"},500);
+                } else if(e.innerText="End Chatting"){
+                    e.innerText="Start Chatting";
+                    document.getElementById("chat").style.opacity="0";
+                    setTimeout(function(){document.getElementById("chat").style.display="none"},500);
+                    document.getElementById("tagline").style.visibility="visible";
+                }
             }
         </script>
     </body>
